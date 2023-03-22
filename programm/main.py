@@ -25,18 +25,18 @@ if quest.lower() == 'да':
             query = {'vacancy_experience' : 'Без опыта'}
             super_job.select_from_file(query,job_title)#вызов метода select_from_file класса superjob
           elif req.lower() == 'от 1 года':
-               query = {'vacancy_experience': 'От 1 года'}
-               super_job.select_from_file(query, job_title)
+            query = {'vacancy_experience': 'От 1 года'}
+            super_job.select_from_file(query, job_title)
           elif req.lower() == 'от 3 лет':
-               query = {'vacancy_experience': 'От 3 лет'}
-               super_job.select_from_file(query, job_title)
+            query = {'vacancy_experience': 'От 3 лет'}
+            super_job.select_from_file(query, job_title)
           elif req.lower() == 'от 6 лет':
-               query = {'vacancy_experience': 'От 6 лет'}
-               super_job.select_from_file(query, job_title)
+            query = {'vacancy_experience': 'От 6 лет'}
+            super_job.select_from_file(query, job_title)
           elif req == '10 самых высокооплачеваемых вакансий':
-               highest_salary(super_job.get_connector(job_title).file_name)#вызов функции  highest_salary куда передаётся название файла
+            highest_salary(super_job.get_connector(job_title).file_name)#вызов функции  highest_salary куда передаётся название файла
           elif req.lower() == '10 самых новых вакансий':
-              the_newest_vacancies(super_job.get_connector(job_title).file_name)#вызов функции    the_newest_vacancies куда передаётся название файла
+            the_newest_vacancies(super_job.get_connector(job_title).file_name)#вызов функции    the_newest_vacancies куда передаётся название файла
 
           print('Хотите продолжить?')
           stop = input('да/нет')
@@ -55,18 +55,18 @@ if quest.lower() == 'да':
             print('Посмотреть вакансии по городам, для этого просто введите слово - город')
             print('Посмотреть вакансии, в зависимости от вашей желаемой  зарплаты - для этого просто введите - зарплата')
             req = input('Введите критерий для вывода информации')
-            if  req.lower() == '10 самых высокооплачеваемых вакансий':
-                highest_salary(hh.get_connector(job_title).file_name)
+            if req.lower() == '10 самых высокооплачеваемых вакансий':
+               highest_salary(hh.get_connector(job_title).file_name)
 
             elif req.lower() == 'город':
-                city = input('Введите название города')
-                query = {"vacancy_area": city.title()}
-                hh.select_from_file(query,job_title)#вызов функции the_newest_vacancies куда передаётся название файла
+               city = input('Введите название города')
+               query = {"vacancy_area": city.title()}
+               hh.select_from_file(query,job_title)#вызов функции the_newest_vacancies куда передаётся название файла
 
             elif req.lower() == 'зарплата':
-                min = int(input('Введите минимальный оклад, который вам нужен, например: 15000'))
-                min_salary(min,hh.get_connector(job_title).file_name)#вызов функции min_salary, куда передаётся название файла
+               min = int(input('Введите минимальный оклад, который вам нужен, например: 15000'))
+               min_salary(min,hh.get_connector(job_title).file_name)#вызов функции min_salary, куда передаётся название файла
             print('Хотите продолжить?')
             stop = input('да/нет')
             if stop == 'нет':
-                break
+               break

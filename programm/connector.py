@@ -95,10 +95,3 @@ class Connector:
                       select_dict.append(file_dict[i])
         return select_dict
 
-
-
-
-c = Connector()
-c.file_name = 'mayton'
-query = {1:2}
-c.insert(query)

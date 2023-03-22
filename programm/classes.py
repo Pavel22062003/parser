@@ -49,9 +49,9 @@ class HH(Engine):
             description = data['items'][i]['snippet']['responsibility']
 
             if data['items'][i]['salary'] == None:
-                salary_from = None
-                salary_to = None
-                cur = None
+                salary_from = f'не указано'
+                salary_to = f'не указано'
+                cur = f'не указано'
             else:
                 salary_from = data['items'][i]['salary']['from']
                 salary_to = data['items'][i]['salary']['to']
@@ -98,14 +98,21 @@ class HH(Engine):
             vacancy_description = vacancies[i]['vacancy_description']
             vacancy_area = vacancies[i]["vacancy_area"]
             data_published = vacancies[i]["data_published"]
-            salary_from = vacancies[i]['salary_from']
-            salary_to = vacancies[i]['salary_to']
+            if vacancies[i]['salary_from'] == None:
+                salary_from = f'не указано'
+            else:
+                salary_from = vacancies[i]['salary_from']
+            if vacancies[i]['salary_to'] == None:
+                salary_to = f'не указано'
+            else:
+                salary_to = vacancies[i]['salary_to']
             currency = vacancies[i]['currency']
             requirements = vacancies[i]['requirements']
             print(f'Вакансия {counter}')
             print(f'{vacancy_name}')
             print(f'Город - {vacancy_area}')
-            print(f'Зарплата от {salary_from} до {salary_to}')
+            print(f'Зарплата от - {salary_from}')
+            print(f'Зарплата до - {salary_to}')
             print(f'Валюта - {currency}')
             print(f'Дата публикации - {data_published}')
             print(f'Описание вакансии - {vacancy_description}')
@@ -151,7 +158,10 @@ class SuperJob(Engine):
           description = request['objects'][i]['candidat']  # Описание вакансии
 
           payment_from  = request['objects'][i]['payment_from']
-          payment_to = request['objects'][i]['payment_to']
+          if request['objects'][i]['payment_to'] == 0:
+              payment_to = f'не указано'
+          else:
+              payment_to = request['objects'][i]['payment_to']
           city = request['objects'][i]['town']['title']
           ts = int(request['objects'][i]['date_published'])
           date_published = datetime.utcfromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
@@ -203,7 +213,8 @@ class SuperJob(Engine):
             print(f'Вакансия {counter}')
             print(f'{vacancy_name}')
             print(f'Город - {vacancy_area}')
-            print(f'Зарплата от {salary_from} до {salary_to}')
+            print(f'Зарплата от - {salary_from}')
+            print(f'Зарплата до - {salary_to}')
             print(f'Дата публикации - {data_published}')
             print(f'Требуемый опыт - {vacancy_experience}')
             print(vacancy_description)
